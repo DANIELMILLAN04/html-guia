@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario de ejemplo</title>
+</head>
+<body>
+  <main>
+    <h1>Formulario de contacto</h1>
+    <form action="" method="get">
+      <p>
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" name="nombre" autocomplete="name" required>
+      </p>
+      <p>
+        <label for="correo">Correo electrónico:</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" required>
+      </p>
+      <fieldset>
+        <legend>¿Qué tema te interesa?</legend>
+        <label><input type="radio" name="tema" value="html" required> HTML</label>
+        <label><input type="radio" name="tema" value="css"> CSS</label>
+      </fieldset>
+      <p>
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="4" maxlength="500"></textarea>
+      </p>
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+</body>
+</html>

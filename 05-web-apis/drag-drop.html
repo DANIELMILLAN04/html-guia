@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de arrastrar y soltar</title>
+  <style>
+    #zona { min-height: 100px; padding: 1rem; border: 2px dashed #555; }
+  </style>
+</head>
+<body>
+  <h1>Arrastrar y soltar</h1>
+  <p id="elemento" draggable="true" tabindex="0">Arrastra este texto a la zona.</p>
+  <div id="zona">Zona para soltar</div>
+  <script>
+    const elemento = document.getElementById("elemento");
+    const zona = document.getElementById("zona");
+    elemento.addEventListener("dragstart", evento => {
+      evento.dataTransfer.setData("text/plain", elemento.textContent);
+    });
+    zona.addEventListener("dragover", evento => evento.preventDefault());
+    zona.addEventListener("drop", evento => {
+      evento.preventDefault();
+      zona.textContent = evento.dataTransfer.getData("text/plain");
+    });
+  </script>
+</body>
+</html>

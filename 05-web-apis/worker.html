@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de Web Worker</title>
+</head>
+<body>
+  <h1>Web Worker</h1>
+  <button id="calcular">Calcular</button>
+  <p id="resultado" aria-live="polite"></p>
+  <script>
+    const resultado = document.getElementById("resultado");
+    if ("Worker" in window) {
+      const worker = new Worker("worker.js");
+      worker.addEventListener("message", evento => {
+        resultado.textContent = evento.data;
+      });
+      document.getElementById("calcular").addEventListener("click", () => {
+        resultado.textContent = "Calculando…";
+        worker.postMessage(1000000);
+      });
+    } else {
+      resultado.textContent = "Este navegador no admite Web Workers.";
+    }
+  </script>
+</body>
+</html>

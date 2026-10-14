@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de geolocalización</title>
+</head>
+<body>
+  <h1>Geolocalización</h1>
+  <button id="obtener">Solicitar ubicación</button>
+  <p id="resultado" aria-live="polite">La ubicación solo se solicita al pulsar el botón.</p>
+  <script>
+    const resultado = document.getElementById("resultado");
+    document.getElementById("obtener").addEventListener("click", () => {
+      if (!("geolocation" in navigator)) {
+        resultado.textContent = "Este navegador no ofrece geolocalización.";
+        return;
+      }
+
+      resultado.textContent = "Esperando autorización y ubicación…";
+      navigator.geolocation.getCurrentPosition(
+        posicion => {
+          resultado.textContent =
+            `Latitud: ${posicion.coords.latitude}, longitud: ${posicion.coords.longitude}`;
+        },
+        error => {
+          resultado.textContent = `No se pudo obtener la ubicación: ${error.message}`;
+        }
+      );
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de Web Storage</title>
+</head>
+<body>
+  <h1>Guardar una preferencia</h1>
+  <label for="nombre">Nombre para saludar:</label>
+  <input id="nombre">
+  <button id="guardar">Guardar</button>
+  <p id="saludo" aria-live="polite"></p>
+  <script>
+    const campo = document.getElementById("nombre");
+    const saludo = document.getElementById("saludo");
+    campo.value = localStorage.getItem("nombrePreferido") || "";
+    document.getElementById("guardar").addEventListener("click", () => {
+      localStorage.setItem("nombrePreferido", campo.value);
+      saludo.textContent = campo.value ? `Hola, ${campo.value}.` : "Preferencia borrada.";
+      if (!campo.value) localStorage.removeItem("nombrePreferido");
+    });
+  </script>
+</body>
+</html>

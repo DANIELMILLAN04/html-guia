@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de Canvas</title>
+</head>
+<body>
+  <h1>Un rectángulo dibujado con Canvas</h1>
+  <canvas id="lienzo" width="240" height="120">
+    El navegador no admite Canvas. El gráfico representa un rectángulo azul.
+  </canvas>
+  <script>
+    const lienzo = document.getElementById("lienzo");
+    const contexto = lienzo.getContext("2d");
+    contexto.fillStyle = "royalblue";
+    contexto.fillRect(20, 20, 160, 70);
+  </script>
+</body>
+</html>
